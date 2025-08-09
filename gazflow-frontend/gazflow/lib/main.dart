@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gazflow/screens/customer_hone_screen.dart';
 import 'package:gazflow/screens/driver_dashboard.dart';
 import 'package:gazflow/screens/login_screen.dart';
+import 'package:gazflow/screens/main_layout.dart';
 import 'package:gazflow/screens/orders_screen.dart';
 import 'package:gazflow/screens/profile_screen.dart';
 import 'package:gazflow/screens/register_screen.dart';
@@ -27,7 +28,7 @@ class GazFlowApp extends StatelessWidget {
         '/': (context) => SplashScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
-        '/customerHome': (context) => CustomerHomeContent(),
+        '/customerHome': (context) => MainLayout(),
         '/driverDashboard': (context) => DriverDashboardScreen(),
         '/search': (context) => SearchScreen(),
         '/orders': (context) => OrdersScreen(),
