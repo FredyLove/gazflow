@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gazflow/screens/customer_hone_screen.dart';
-import 'package:gazflow/screens/driver_dashboard.dart';
+
+import 'package:gazflow/features/driver_dashboard/driver_dashboard_screen.dart';
+import 'package:gazflow/features/driver_dashboard/driver_history_screen.dart';
+import 'package:gazflow/features/driver_dashboard/driver_orders_screen.dart';
+import 'package:gazflow/features/driver_dashboard/driver_profile_screen.dart';
 import 'package:gazflow/screens/login_screen.dart';
 import 'package:gazflow/screens/main_layout.dart';
 import 'package:gazflow/screens/orders_screen.dart';
@@ -33,6 +36,10 @@ class GazFlowApp extends StatelessWidget {
         '/search': (context) => SearchScreen(),
         '/orders': (context) => OrdersScreen(),
         '/profile': (context) => ProfileScreen(),
+        '/driver-dashboard': (context) => const DriverDashboardScreen(),
+        '/driver-orders': (context) => const DriverOrdersScreen(),
+        '/driver-history': (context) => const DriverHistoryScreen(),
+        '/driver-profile': (context) => const DriverProfileScreen(),
       },
     );
   }
