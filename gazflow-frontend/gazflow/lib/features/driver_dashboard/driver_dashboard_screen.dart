@@ -111,7 +111,7 @@ class _DriverDashboardScreenState extends State<DriverDashboardScreen>
                 opacity: _fadeAnimation,
                 child: QuickActions(
                   onEmergencyPressed: _showEmergencyDialog,
-                  onSupportPressed: _contactSupport,
+                  onSupportPressed: _contactSupport, onNavigationPressed: () {  }, onTrainingPressed: () {  },
                 ),
               ),
             ),

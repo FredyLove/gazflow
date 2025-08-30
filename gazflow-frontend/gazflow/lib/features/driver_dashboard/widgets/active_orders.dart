@@ -40,10 +40,10 @@ class ActiveOrders extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () => onViewAllPressed(orders.first),
-                child: const Text("View All"),
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.blue,
                 ),
+                child: const Text("View All"),
               ),
             ],
           ),
@@ -54,7 +54,7 @@ class ActiveOrders extends StatelessWidget {
                 onCallPressed: () => onCallPressed(order),
                 onChatPressed: () => onChatPressed(order),
                 onStatusPressed: () => onStatusPressed(order),
-              )).toList(),
+              )),
         ],
       ),
     );

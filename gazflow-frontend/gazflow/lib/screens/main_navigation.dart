@@ -6,6 +6,8 @@ import 'package:gazflow/screens/search_screen.dart';
 import 'package:gazflow/widgets/custom_bottom_nav_bar.dart';
 
 class MainNavigationScreen extends StatefulWidget {
+  const MainNavigationScreen({super.key});
+
   @override
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
 }

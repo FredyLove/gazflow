@@ -6,11 +6,11 @@ class QuickActionsSection extends StatelessWidget {
   final VoidCallback onSupportPressed;
 
   const QuickActionsSection({
-    Key? key,
+    super.key,
     required this.onOrderNowPressed,
     required this.onSchedulePressed,
     required this.onSupportPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +54,12 @@ class QuickActionCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const QuickActionCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     required this.color,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

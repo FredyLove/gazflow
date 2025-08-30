@@ -8,13 +8,13 @@ class ActiveOrderCard extends StatelessWidget {
   final VoidCallback onTrackPressed;
 
   const ActiveOrderCard({
-    Key? key,
+    super.key,
     required this.orderId,
     required this.status,
     required this.progress,
     required this.estimatedTime,
     required this.onTrackPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -7,12 +7,12 @@ class CustomAppBarWidget extends StatelessWidget {
   final VoidCallback onNotificationPressed;
 
   const CustomAppBarWidget({
-    Key? key,
+    super.key,
     required this.userName,
     required this.currentAddress,
     required this.fadeAnimation,
     required this.onNotificationPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

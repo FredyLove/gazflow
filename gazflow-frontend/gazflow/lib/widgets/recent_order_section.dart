@@ -6,10 +6,10 @@ class RecentOrdersSection extends StatelessWidget {
   final Function(String) onOrderPressed;
 
   const RecentOrdersSection({
-    Key? key,
+    super.key,
     required this.onViewAllPressed,
     required this.onOrderPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +57,10 @@ class RecentOrderCard extends StatelessWidget {
   final VoidCallback onPressed;
 
   const RecentOrderCard({
-    Key? key,
+    super.key,
     required this.order,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

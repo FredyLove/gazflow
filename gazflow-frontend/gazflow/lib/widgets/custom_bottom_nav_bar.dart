@@ -5,10 +5,10 @@ class CustomBottomNavBar extends StatelessWidget {
   final Function(int)? onTabChanged; // Make this optional
 
   const CustomBottomNavBar({
-    Key? key,
+    super.key,
     required this.currentIndex,
     this.onTabChanged, // Optional callback for parent to know about tab changes
-  }) : super(key: key);
+  });
 
   // Handle navigation internally
   void _handleNavigation(BuildContext context, int index) {
@@ -76,12 +76,12 @@ class NavBarItem extends StatelessWidget {
   final VoidCallback onTap;
 
   const NavBarItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     required this.isActive,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

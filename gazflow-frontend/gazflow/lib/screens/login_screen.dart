@@ -114,6 +114,8 @@ class _LoginScreenState extends State<LoginScreen>
               Navigator.pushReplacementNamed(context, '/customerHome');
             } else if (role == 'driver') {
               Navigator.pushReplacementNamed(context, '/driverDashboard');
+            } else if (role == 'Admin') {
+              Navigator.pushReplacementNamed(context, '/admin-dashboard');
             } else {
               _showError("Unknown User Role");
             }

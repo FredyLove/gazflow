@@ -6,10 +6,10 @@ class GasBottlesSection extends StatelessWidget {
   final Function(Map<String, dynamic>) onBottleOrderPressed;
 
   const GasBottlesSection({
-    Key? key,
+    super.key,
     required this.onViewAllPressed,
     required this.onBottleOrderPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class GasBottlesSection extends StatelessWidget {
           onActionPressed: onViewAllPressed,
         ),
         SizedBox(height: 16),
-        Container(
+        SizedBox(
           height: 180,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -69,10 +69,10 @@ class GasBottleCard extends StatelessWidget {
   final VoidCallback onOrderPressed;
 
   const GasBottleCard({
-    Key? key,
+    super.key,
     required this.bottle,
     required this.onOrderPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,7 @@ class GasBottleCard extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 32,
               child: ElevatedButton(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:gazflow/features/admin_dashboard/admin_dashboard_screen.dart';
 import 'package:gazflow/features/driver_dashboard/driver_dashboard_screen.dart';
 import 'package:gazflow/features/driver_dashboard/driver_history_screen.dart';
 import 'package:gazflow/features/driver_dashboard/driver_orders_screen.dart';
@@ -13,7 +13,7 @@ import 'package:gazflow/screens/search_screen.dart';
 import 'screens/splash_screen.dart';
 
 void main() {
-  runApp(GazFlowApp());
+  runApp(const GazFlowApp());
 }
 
 class GazFlowApp extends StatelessWidget {
@@ -24,22 +24,24 @@ class GazFlowApp extends StatelessWidget {
     return MaterialApp(
       title: 'GazFlow',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       initialRoute: '/',
       routes: {
-        '/': (context) => SplashScreen(),
-        '/login': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen(),
-        '/customerHome': (context) => MainLayout(),
-        '/driverDashboard': (context) => DriverDashboardScreen(),
-        '/search': (context) => SearchScreen(),
-        '/orders': (context) => OrdersScreen(),
-        '/profile': (context) => ProfileScreen(),
+        '/': (context) => const SplashScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/customer-home': (context) => const MainLayout(),
         '/driver-dashboard': (context) => const DriverDashboardScreen(),
         '/driver-orders': (context) => const DriverOrdersScreen(),
         '/driver-history': (context) => const DriverHistoryScreen(),
         '/driver-profile': (context) => const DriverProfileScreen(),
+        '/admin-dashboard': (context) => const AdminDashboardScreen(),
+        '/search': (context) => const SearchScreen(),
+        '/orders': (context) => const OrdersScreen(),
+        '/profile': (context) => const ProfileScreen(),
       },
     );
   }
