@@ -4,8 +4,6 @@ import '../store_manager_dashboard/widgets/store_manager_header.dart';
 import '../store_manager_dashboard/widgets/store_stats_section.dart';
 import '../store_manager_dashboard/widgets/quick_action_grid.dart';
 import '../store_manager_dashboard/widgets/navigation_bar.dart';
-import '../store_manager_dashboard/models/storage_location.dart';
-import '../store_manager_dashboard/models/gas_bottle.dart';
 
 class StoreManagerDashboardScreen extends StatefulWidget {
   const StoreManagerDashboardScreen({super.key});
@@ -137,6 +135,8 @@ class _StoreManagerDashboardScreenState extends State<StoreManagerDashboardScree
 
 // Send Notification Dialog
 class SendNotificationDialog extends StatefulWidget {
+  const SendNotificationDialog({super.key});
+
   @override
   State<SendNotificationDialog> createState() => _SendNotificationDialogState();
 }
