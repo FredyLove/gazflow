@@ -429,6 +429,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                                 ),
                                 SizedBox(height: 12),
                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
                                       child: _buildRoleCard(
@@ -445,6 +446,15 @@ class _RegisterScreenState extends State<RegisterScreen>
                                         'Driver',
                                         Icons.delivery_dining_outlined,
                                         'Deliver gas bottles',
+                                      ),
+                                    ),
+                                    SizedBox(width: 12),
+                                    Expanded(
+                                      child: _buildRoleCard(
+                                        'store_manager',
+                                        'Store Manager',
+                                        Icons.store_outlined,
+                                        'Manage gas inventory',
                                       ),
                                     ),
                                   ],

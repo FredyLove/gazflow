@@ -111,12 +111,14 @@ class _LoginScreenState extends State<LoginScreen>
 
             _showSuccess("Login successful!");
             if (role == 'customer') {
-              Navigator.pushReplacementNamed(context, '/customerHome');
+              Navigator.pushReplacementNamed(context, '/customer-home');
             } else if (role == 'driver') {
-              Navigator.pushReplacementNamed(context, '/driverDashboard');
+              Navigator.pushReplacementNamed(context, '/driver-dashboard');
             } else if (role == 'Admin') {
               Navigator.pushReplacementNamed(context, '/admin-dashboard');
-            } else {
+            } else if(role == 'store_manager'){
+              Navigator.pushReplacementNamed(context, '/store-manager-dashboard');
+            }else{
               _showError("Unknown User Role");
             }
           } else {

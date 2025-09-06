@@ -4,6 +4,7 @@ import 'package:gazflow/features/driver_dashboard/driver_dashboard_screen.dart';
 import 'package:gazflow/features/driver_dashboard/driver_history_screen.dart';
 import 'package:gazflow/features/driver_dashboard/driver_orders_screen.dart';
 import 'package:gazflow/features/driver_dashboard/driver_profile_screen.dart';
+import 'package:gazflow/features/store_manager_dashboard/store_manager_dashboard_screen.dart';
 import 'package:gazflow/screens/login_screen.dart';
 import 'package:gazflow/screens/main_layout.dart';
 import 'package:gazflow/screens/orders_screen.dart';
@@ -39,6 +40,7 @@ class GazFlowApp extends StatelessWidget {
         '/driver-history': (context) => const DriverHistoryScreen(),
         '/driver-profile': (context) => const DriverProfileScreen(),
         '/admin-dashboard': (context) => const AdminDashboardScreen(),
+        '/store-manager-dashboard': (context) => const StoreManagerDashboardScreen(),
         '/search': (context) => const SearchScreen(),
         '/orders': (context) => const OrdersScreen(),
         '/profile': (context) => const ProfileScreen(),
