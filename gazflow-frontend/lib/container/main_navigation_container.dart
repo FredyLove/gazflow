@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
-import '../screens/customer_hone_screen.dart';
-import '../screens/search_screen.dart'; // Import your other screens
-import '../screens/orders_screen.dart';
-import '../screens/profile_screen.dart';
+import '../features/customer_dashboard/customer_hone_screen.dart';
+import '../features/customer_dashboard/search_screen.dart'; // Import your other screens
+import '../features/customer_dashboard/orders_screen.dart';
+import '../features/customer_dashboard/profile_screen.dart';
 
 class MainNavigationContainer extends StatefulWidget {
   const MainNavigationContainer({super.key});

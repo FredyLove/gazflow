@@ -6,12 +6,13 @@ import 'package:gazflow/features/driver_dashboard/driver_orders_screen.dart';
 import 'package:gazflow/features/driver_dashboard/driver_profile_screen.dart';
 import 'package:gazflow/features/store_manager_dashboard/store_manager_dashboard_screen.dart';
 import 'package:gazflow/screens/login_screen.dart';
-import 'package:gazflow/screens/main_layout.dart';
-import 'package:gazflow/screens/orders_screen.dart';
-import 'package:gazflow/screens/profile_screen.dart';
+import 'package:gazflow/features/customer_dashboard/main_layout.dart';
+import 'package:gazflow/features/customer_dashboard/orders_screen.dart';
+import 'package:gazflow/features/customer_dashboard/profile_screen.dart';
 import 'package:gazflow/screens/register_screen.dart';
-import 'package:gazflow/screens/search_screen.dart';
-import 'screens/splash_screen.dart';
+import 'package:gazflow/features/customer_dashboard/search_screen.dart';
+import 'package:gazflow/screens/welcome_page.dart';
+import 'screens/onboarding_screen.dart';
 
 void main() {
   runApp(const GazFlowApp());
@@ -31,7 +32,8 @@ class GazFlowApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/': (context) => const OnboardingScreen(),
+        '/home': (context) => const WelcomeScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
         '/customer-home': (context) => const MainLayout(),
