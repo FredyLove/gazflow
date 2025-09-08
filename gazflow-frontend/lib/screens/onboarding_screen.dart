@@ -114,7 +114,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                     Row(
                       children: [
                         Image.asset(
-                          "assets/images/logo.png", // <-- replace with your logo
+                          'assets/images/logo.png', // <-- replace with your logo
                           height: 40,
                         ),
                         const SizedBox(width: 8),
