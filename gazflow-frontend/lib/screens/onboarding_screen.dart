@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
 import 'welcome_page.dart';
 
 class OnboardingScreen extends StatefulWidget {

@@ -2,6 +2,9 @@ from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from bson import ObjectId
 
+# -----------------------
+# PyObjectId helper (Pydantic v2)
+# -----------------------
 class PyObjectId(ObjectId):
     @classmethod
     def __get_validators__(cls):
@@ -14,9 +17,13 @@ class PyObjectId(ObjectId):
         return ObjectId(v)
 
     @classmethod
-    def __modify_schema__(cls, field_schema):
-        field_schema.update(type="string")
+    def __get_pydantic_json_schema__(cls, core_schema, handler):
+        return {"type": "string", "title": "ObjectId"}
 
+
+# -----------------------
+# User Model
+# -----------------------
 class UserModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id")
     name: str
@@ -24,7 +31,8 @@ class UserModel(BaseModel):
     password: str
     role: str = "user"
 
-    class Config:
-        allow_population_by_field_name = True
-        arbitrary_types_allowed = True
-        json_encoders = {ObjectId: str}
+    model_config = {
+        "populate_by_name": True,       # replaces allow_population_by_field_name
+        "arbitrary_types_allowed": True,
+        "json_encoders": {ObjectId: str},
+    }

@@ -1,16 +1,18 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routes import auth, gas, storage_locations
+from app.routes import auth, admin, driver, store_manager, customer, utility
 from app.db.mongo import init_db, db 
 
 app = FastAPI(title="GazFlow API")
 
 # Include API routers
 app.include_router(auth.router)
-app.include_router(gas.router)
-app.include_router(storage_locations.router)
-
+app.include_router(admin.router)
+app.include_router(customer.router)
+app.include_router(driver.router)
+app.include_router(store_manager.router)
+app.include_router(utility.router)
 # Enable CORS (allow frontend access)
 app.add_middleware(
     CORSMiddleware,
