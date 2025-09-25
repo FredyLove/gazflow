@@ -1,4 +1,6 @@
 # app/customer/routes.py
+from bson import ObjectId
+from app.db.mongo import db
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import List
 from app.core.security import get_current_user
@@ -62,8 +64,8 @@ def list_orders(current_user: dict = Depends(get_current_user)):
     return response
 
 @router.get("/orders/{order_id}", response_model=OrderResponse)
-def track_order(order_id: str, current_user: dict = Depends(get_current_user)):
-    order = Order.get_by_id(order_id, current_user["_id"])
+async def track_order(order_id: str, current_user: dict = Depends(get_current_user)):
+    order = await Order.get_by_id(order_id, current_user["_id"])
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
     return OrderResponse(
@@ -75,3 +77,21 @@ def track_order(order_id: str, current_user: dict = Depends(get_current_user)):
         created_at=order.created_at,
         delivered_at=order.delivered_at
     )
+async def get_driver_location(order_id: str):
+    order = await db.orders.find_one({"_id": ObjectId(order_id)})
+    if not order:
+        return {"lat": None, "lon": None, "message": "Order not found"}
+
+    driver_id = order.get("driver_id")
+    if not driver_id:
+        return {"lat": None, "lon": None, "message": "No driver assigned"}
+
+    location = await db.driver_locations.find_one({"driver_id": driver_id})
+    if not location:
+        return {"lat": None, "lon": None, "message": "Location not found"}
+
+    return {
+        "lat": location.get("latitude"),
+        "lon": location.get("longitude"),
+        "updated_at": location.get("updated_at")
+    }
