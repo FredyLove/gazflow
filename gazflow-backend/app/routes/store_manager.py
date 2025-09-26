@@ -18,12 +18,35 @@ router = APIRouter(prefix="/stores", tags=["Store Manager"])
 # Store CRUD
 # -------------------------------
 
+# -------------------------------
+# Startup: Ensure 2dsphere index
+# -------------------------------
+def ensure_2dsphere_index():
+    db["db"]["stores"].create_index([("location", "2dsphere")])
+    print("✅ 2dsphere index ensured on stores.location")
+
+# Call this in your FastAPI startup event
+# @app.on_event("startup")
+# def startup_event():
+#     ensure_2dsphere_index()
+
+# -------------------------------
+# Store CRUD
+# -------------------------------
+
 @router.post("/", response_model=StoreResponseSchema)
 def create_store(data: StoreCreateSchema, current_user: dict = Depends(get_current_manager)):
     stores_collection = db["db"]["stores"]
     store_data = data.dict()
     store_data["manager_id"] = ObjectId(current_user["_id"])
     store_data["created_at"] = datetime.utcnow()
+
+    # Automatically create 'location' field
+    store_data["location"] = {
+        "type": "Point",
+        "coordinates": [store_data["longitude"], store_data["latitude"]]
+    }
+
     result = stores_collection.insert_one(store_data)
     return StoreResponseSchema(
         id=str(result.inserted_id),
@@ -65,12 +88,21 @@ def get_store(store_id: str, current_user: dict = Depends(get_current_manager)):
 @router.patch("/{store_id}", response_model=StoreResponseSchema)
 def update_store(store_id: str, data: StoreCreateSchema, current_user: dict = Depends(get_current_manager)):
     stores_collection = db["db"]["stores"]
+    update_data = data.dict()
+
+    # Update location automatically
+    update_data["location"] = {
+        "type": "Point",
+        "coordinates": [update_data["longitude"], update_data["latitude"]]
+    }
+
     result = stores_collection.update_one(
         {"_id": ObjectId(store_id), "manager_id": ObjectId(current_user["_id"])},
-        {"$set": data.dict()}
+        {"$set": update_data}
     )
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Store not found")
+
     store = stores_collection.find_one({"_id": ObjectId(store_id)})
     return StoreResponseSchema(
         id=str(store["_id"]),
@@ -89,7 +121,6 @@ def delete_store(store_id: str, current_user: dict = Depends(get_current_manager
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Store not found")
     return {"detail": "Store deleted successfully"}
-
 # -------------------------------
 # Gas Bottles CRUD
 # -------------------------------

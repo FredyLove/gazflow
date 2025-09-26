@@ -19,6 +19,7 @@ def login(user: UserLogin):
     db_user = authenticate_user(user.email, user.password)
     if not db_user:
         raise HTTPException(status_code=401, detail="Invalid credentials")
-    token = create_access_token(data={"sub": db_user['email'], "role": db_user["role"]})
-    return {"access_token": token, "token_type": "bearer"}
-
+    
+    # Use MongoDB ObjectId string for user_id
+    token = create_access_token(data={"user_id": str(db_user['_id']), "role": db_user["role"]})
+    return {"access_token": token, "token_type": "bearer", "role": db_user["role"]}

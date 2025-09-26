@@ -2,24 +2,8 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 from bson import ObjectId
+from app.models.customer import PyObjectId
 
-# -----------------------
-# PyObjectId helper (Pydantic v2)
-# -----------------------
-class PyObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, v):
-        if not ObjectId.is_valid(v):
-            raise ValueError("Invalid objectid")
-        return ObjectId(v)
-
-    @classmethod
-    def __get_pydantic_json_schema__(cls, core_schema, handler):
-        return {"type": "string", "title": "ObjectId"}
 
 # -----------------------
 # Driver Models

@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes import auth, admin, driver, store_manager, customer, utility, tracking
 from app.db.mongo import init_db, db 
+from app.routes.store_manager import ensure_2dsphere_index
 
 app = FastAPI(title="GazFlow API")
 
@@ -29,6 +30,7 @@ app.add_middleware(
 def startup():
     print("🚀 Starting GazFlow backend")
     init_db()
+    ensure_2dsphere_index()
 
 # Root endpoint
 @app.get("/")
